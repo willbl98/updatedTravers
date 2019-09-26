@@ -35,9 +35,9 @@ public class EventListener {
         RoleRepository roleRepository = context.getBean(RoleRepository.class);
         BCryptPasswordEncoder bCryptPasswordEncoder = context.getBean(BCryptPasswordEncoder.class);
         User user = new User();
-        user.setEmail("willblackwell4@gmail.com");
-        user.setFirstName("William");
-        user.setLastName("Blackwell");
+        user.setEmail("ggh1421@jagmail.southalabama.edu");
+        user.setFirstName("Graydon");
+        user.setLastName("Hodges");
         user.setPassword(bCryptPasswordEncoder.encode("Root"));
         user.setActive(1);
         user.setResetRequired(false);
