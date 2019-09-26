@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="iso-8859-1"?><!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 16 16" style="fill: rgb(255, 255, 255);"
+     xml:space="preserve" width="16" height="16">
+<g>
+	<polygon style="fill:#DBF2FF;" points="1.5,14.5 1.5,5.587 7.999,1.587 14.5,5.587 14.5,14.5  "/>
+	<g>
+		<path style="fill:#7496C4;" d="M7.999,2.174L14,5.867V14H2V5.866L7.999,2.174 M7.999,1L1,5.308V15h14V5.308L7.999,1L7.999,1z"/>
+	</g>
+</g>
+<rect x="2" y="13" style="fill:#B5DDF5;" width="12" height="1"/>
+<g>
+	<polygon style="fill:#F78F8F;" points="7.999,2.831 0.5,7.446 0.5,5.202 7.999,0.587 15.5,5.202 15.5,7.446  "/>
+	<g>
+		<path style="fill:#C74343;" d="M7.999,1.174L15,5.482v1.069L8.523,2.566L7.999,2.243L7.474,2.566L1,6.551V5.482L7.999,1.174     M7.999,0L0,4.923v3.418l7.999-4.923L16,8.341V4.923L7.999,0L7.999,0z"/>
+	</g>
+</g>
+<g>
+	<rect x="6.5" y="8.5" style="fill:#FFC49C;" width="3" height="6"/>
+	<path style="fill:#A16A4A;" d="M9,9v5H7V9H9 M10,8H6v7h4V8L10,8z"/>
+</g>
+</svg>

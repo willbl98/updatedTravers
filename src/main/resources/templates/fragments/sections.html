@@ -1,0 +1,103 @@
+<!--
+  ~ Travers Consulting
+  ~
+  ~ [2014] - [2019] Travers Consulting Incorporated
+  ~ All Rights Reserved.
+  ~
+  ~ NOTICE:  All information contained herein is, and remains
+  ~ the property of Travers Consulting Incorporated and its suppliers,
+  ~ if any.  The intellectual and technical concepts contained
+  ~ herein are proprietary to Travers Consulting Incorporated
+  ~ and its suppliers and may be covered by U.S. and Foreign Patents,
+  ~ patents in process, and are protected by trade secret or copyright law.
+  ~ Dissemination of this information or reproduction of this material
+  ~ is strictly forbidden unless prior written permission is obtained
+  ~ from Travers Consulting Incorporated.
+  -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/tcwebshell.css}" href="../../css/tcwebshell.css" />
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <table class="table100w">
+                    <tr>
+                        <td align="left" width="250px"><img src="/images/TC-Logo.png" height="80px"></td>
+                        <td><H1 class="center" th:text="#{website.title}" /></td>
+                        <td align="right" width="250px">&nbsp;</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <table class="table100w">
+            <tr>
+                <td align="left">
+                    <button type="button" id="home" class="tcui-home-icon" title="Home">
+                        &nbsp;&nbsp;Home
+                    </button>
+
+                </td>
+
+                <td sec:authorize="hasAuthority('ADMIN')">
+                    <button type="button" id="userslist" class="tcui-user-icon" title="Users">
+                        &nbsp;&nbsp;Users
+                    </button>
+                </td>
+                <td align="right">
+                    <button type="button" id="logout" class="tcui-logout-icon" title="Logout">
+                        &nbsp;&nbsp;Logout
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <script>
+            $( "#home" ).button().on( "click", function() {
+                window.open("/", "_self");
+            });
+            $( "#logout" ).button().on( "click", function() {
+                window.open("/logout", "_self");
+            });
+            $("#userslist").button().on("click", function(){
+                window.open("/admin/users", "_self");
+            });
+        </script>
+    </header>
+    <header-form>
+        <div class="navbar-inner">
+            <H1 class="center" th:text="#{website.title}" />
+            <br/>
+        </div>
+    </header-form>
+
+    <footer>
+        <br/>
+        <hr/>
+        <table class="table100w"><td align="center">Copyright 2019</td></td> </table>
+    </footer>
+
+    <headitems>
+
+        <link rel="stylesheet" th:href="@{/css/tcbuttons-1-0.css}" href="../../css/tcbuttons-1-0.css" />
+        <link rel="stylesheet" th:href="@{/css/tcwebshell.css}" href="../../css/tcwebshell.css" />
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+        <link rel="stylesheet" type = "text/css" href = "/js/ToastMessage/src/main/resources/css/jquery.toastmessage.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+        <script th:src="@{/js/tinymce/tinymce.min.js}" src="../../js/tinymce/tinymce.min.js"></script>
+        <script th:src="@{/js/tinymce/jquery.tinymce.min.js}" src="../../js/tinymce/jquery.tinymce.min.js"></script>
+        <script src="/js/ToastMessage/src/main/javascript/jquery.toastmessage.js"></script>
+
+
+    </headitems>
+
+
+</body>
+</html>

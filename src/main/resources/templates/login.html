@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{login.page.title}">Title</title>
+    <div th:insert="fragments/sections.html :: headitems"> </div>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <table class="table100w">
+                        <tr>
+                            <td align="left" width="250px"><img src="/images/TC-Logo.png" height="80px"></td>
+                            <td><H1 class="center" th:text="#{website.title}" /></td>
+                            <td align="right" width="250px">&nbsp;</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </header>
+    <br/>
+    <form th:action="@{/login}" method="POST" class="form-signin">
+        <input type="text" id="email" name="email"  th:placeholder="Email"
+               class="form-control" size="40"/> <br/>
+        <input type="password"  th:placeholder="Password"
+               id="password" name="password" class="form-control" size="40"/> <br />
+        <button class="tcui-login-icon ui-button ui-corner-all ui-widget" name="Submit" value="Login" type="Submit" th:text="Login"></button>
+        <div align="center" th:if="${param.error}">
+            <p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
+        </div>
+    </form>
+</div>
+</body>
+</html>

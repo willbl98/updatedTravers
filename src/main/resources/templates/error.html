@@ -1,0 +1,45 @@
+<!--
+  ~ Travers Consulting
+  ~
+  ~ [2014] - [2019] Travers Consulting Incorporated
+  ~ All Rights Reserved.
+  ~
+  ~ NOTICE:  All information contained herein is, and remains
+  ~ the property of Travers Consulting Incorporated and its suppliers,
+  ~ if any.  The intellectual and technical concepts contained
+  ~ herein are proprietary to Travers Consulting Incorporated
+  ~ and its suppliers and may be covered by U.S. and Foreign Patents,
+  ~ patents in process, and are protected by trade secret or copyright law.
+  ~ Dissemination of this information or reproduction of this material
+  ~ is strictly forbidden unless prior written permission is obtained
+  ~ from Travers Consulting Incorporated.
+  -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Error</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+	href="../../css/bootstrap.min.css" />
+    <title th:text="#{error.page.title}">Title</title>
+    <div th:insert="fragments/sections.html :: headitems"> </div>
+</head>
+<body>
+    <div class="container">
+        <div th:insert="fragments/sections.html :: header"> </div>
+        <br/>
+        <h1 th:text="#{error.page.header}">Title</h1>
+        <div id="created" th:text="${#dates.format(timestamp)}">July 11,
+            2012 2:17:16 PM CDT</div>
+        <div>
+            There was an unexpected error (type=<span th:text="${error}">Bad</span>, status=<span th:text="${status}">500</span>).
+        </div>
+        <div th:text="${message}">Fake content</div>
+        <div>
+            Please contact the operator with the above information.
+        </div>
+
+        <div th:insert="fragments/sections.html :: footer"> </div>
+    </div>
+</body>
+</html>

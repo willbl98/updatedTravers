@@ -1,0 +1,246 @@
+<!--
+  ~ Travers Consulting
+  ~
+  ~ [2014] - [2019] Travers Consulting Incorporated
+  ~ All Rights Reserved.
+  ~
+  ~ NOTICE:  All information contained herein is, and remains
+  ~ the property of Travers Consulting Incorporated and its suppliers,
+  ~ if any.  The intellectual and technical concepts contained
+  ~ herein are proprietary to Travers Consulting Incorporated
+  ~ and its suppliers and may be covered by U.S. and Foreign Patents,
+  ~ patents in process, and are protected by trade secret or copyright law.
+  ~ Dissemination of this information or reproduction of this material
+  ~ is strictly forbidden unless prior written permission is obtained
+  ~ from Travers Consulting Incorporated.
+  -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{users.page.title}">Title</title>
+    <div th:insert="fragments/sections.html :: headitems"> </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var userColumns = [
+                {
+                    "sTitle": "ID",
+                    "mData": "id",
+                    "bSortable": true,
+                    "mRender": function (data, type, full) {
+                        if (data != null) {
+                            return '<a href="#" class="blueLink" onclick="userEdit(\'' + data + '\');return false;" >'+data+'</a>';
+                        } else {
+                            return 'error';
+                        }
+                    },
+                    "sWidth": "25px"
+                },
+                {"sTitle": "Email", "mData": "email"},
+                {"sTitle": "First Name", "mData": "firstName"},
+                {"sTitle": "Last Name", "mData": "lastName"}
+
+            ];
+
+            $('#usersTable').DataTable({
+                "dom": '<"top"if>rt<"bottom"lp><"clear">',
+                "iDisplayLength": 10,
+                "bProcessing": true,
+                "sAjaxSource": '/api/users/list',
+                "aoColumns": userColumns,
+                "aaSorting": [],
+                "deferRender": true,
+                "oLanguage": {"sSearch": "Filter: "}
+            });
+
+            var dialogUser, formActionUser;
+
+            dialogUser = $( "#dialog-form-user" ).dialog({
+                autoOpen: false,
+                height: 450,
+                width: 700,
+                modal: true,
+                buttons: {
+                    "Save": userSubmit,
+                    Cancel: function() {
+                        dialogUser.dialog( "close" );
+                    }
+                },
+                close: function() {
+                    $('#usersTable').DataTable().ajax.reload();
+                }
+            });
+
+            formActionUser = dialogUser.find( "dialog-form-user" ).on( "submit", function( event ) {
+                event.preventDefault();
+                userSubmit();
+            });
+
+            $( "#add_user_action" ).button().on( "click", function() {
+                document.getElementById("form_action_user").reset();
+                document.getElementById("id").value = "";
+                document.getElementById("active").value = "";
+                $("#newOrReset").val("true");
+                loadRoles();
+                dialogUser = $( "#dialog-form-user" ).dialog({
+                    autoOpen: false,
+                    height: 450,
+                    width: 700,
+                    modal: true,
+                    buttons: {
+                        "Save": userSubmit,
+                        Cancel: function() {
+                            dialogUser.dialog( "close" );
+                        }
+                    },
+                    close: function() {
+                        $('#usersTable').DataTable().ajax.reload();
+                    }
+                });
+                dialogUser.dialog( "open" );
+            });
+        });
+        function userEdit(data){
+            document.getElementById("form_action_user").reset();
+            document.getElementById("id").value = "";
+            document.getElementById("active").value = "";
+            loadRoles();
+            $.ajax({
+                type: "GET",
+                contentType: "application/json",
+                url: "/api/users/"+data,
+                //data: JSON.stringify(search),
+                dataType: 'json',
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+                    $("#form_action_user :input").each(function(){
+                        $(this).val(data[$(this).attr("id")]);
+                    });
+                    $("#newOrReset").val("false");
+                    for(var i =0; i < data["roles"].length; i++){
+                        $("#roles option[value='"+data.roles[i].id+"']").prop("selected", true);
+                    }
+                },
+                error: function (e) {
+
+                    var json = "<h4>Ajax Response</h4><pre>"
+                        + e.responseText + "</pre>";
+                    //$('#feedback').html(json);
+
+                    console.log("ERROR : ", e);
+                }
+            });
+            var dialogUser = $( "#dialog-form-user" ).dialog({
+                autoOpen: false,
+                height: 450,
+                width: 700,
+                modal: true,
+                buttons: {
+                    "Save": userSubmit,
+                    "Reset Password": function(){
+                        $("#newOrReset").val("true");
+                        userSubmit();
+                    },
+                    Cancel: function() {
+                        dialogUser.dialog( "close" );
+                    }
+                },
+                close: function() {
+                    $('#usersTable').DataTable().ajax.reload();
+                }
+            });
+            dialogUser.dialog( "open" );
+        }
+
+
+        function userSubmit() {
+            console.log(data = $( "#form_action_user" ).serialize());
+            $.ajax({
+                type: "POST",
+                url: "/api/users/",
+                data: $( "#form_action_user" ).serialize(),
+                dataType: 'json',
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+                    var json = "<h4>Ajax Response</h4><pre>"
+                        + JSON.stringify(data, null, 4) + "</pre>";
+                    $('#feedback').html(json);
+                    var dialogUser = $( "#dialog-form-user" ).dialog({
+                        autoOpen: false,
+                        height: 450,
+                        width: 700,
+                        modal: true,
+                        buttons: {
+                            "Save": userSubmit,
+                            Cancel: function() {
+                                dialogUser.dialog( "close" );
+                            }
+                        },
+                        close: function() {
+                            $('#usersTable').DataTable().ajax.reload();
+                        }
+                    });
+
+                    dialogUser.dialog( "close" );
+
+                },
+                error: function (e) {
+
+                    var json = "<h4>Ajax Response</h4><pre>"
+                        + e.responseText + "</pre>";
+                    $('#feedback').html(json);
+
+                    console.log("ERROR : ", e);
+
+                }
+            });
+        }
+
+        function loadRoles(){
+            $.ajax({
+                type: "GET",
+                url: "/api/roles/list",
+                timeout: 600000,
+                success: function(data){
+                    $("#roles").empty();
+                    for(var i =0; i < data.data.length; i++){
+                        $("#roles").append("<option value = '"+data.data[i].id+"'>"+data.data[i].role+"</option>");
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <div th:insert="fragments/sections.html :: header"> </div>
+    <br/>
+    <table id ='usersLabel'><tr style="vertical-align:middle"><td style="font-weight: bold;font-size: 18px;color: darkblue">Users</td><td>&nbsp;<button id="add_user_action" class="tcui-add-icon" title="Add">&nbsp;</button></td></tr></table>
+    <table id="usersTable" class="hover" width="100%"></table>
+
+    <div id="dialog-form-user" title="Create User Account">
+        <p>All form fields are required.</p>
+
+        <form id="form_action_user" name="form_action_user">
+            <input type="hidden" name = "id" id = "id"/>
+            <input type="hidden" id = "newOrReset" name = "newOrReset"/>
+            <input type="hidden" id = "active" name = "active"/>
+            <label for="email" class="strong">Email:</label>
+            <input type = "email" id = "email" name = "email" size="45"><br>
+            <label for="firstName" class="strong">First Name:</label>
+            <input id = "firstName" name = "firstName" size="45"><br>
+            <label for="lastName" class="strong">Last Name:</label>
+            <input id = "lastName" name = "lastName" size="45"><br>
+            <label for="roles" class="strong">Associated Roles:</label>
+            <select id="roles" name = "rolesId"  size="10" multiple="multiple">
+            </select>
+        </form>
+    </div>
+
+
+    <div th:insert="fragments/sections.html :: footer"> </div>
+</div>
+</body>
+</html>

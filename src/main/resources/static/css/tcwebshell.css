@@ -1,0 +1,1300 @@
+/*
+ * Travers Consulting
+ *
+ * [2014] - [2019] Travers Consulting Incorporated
+ * All Rights Reserved.
+ *
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Travers Consulting Incorporated and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Travers Consulting Incorporated
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Travers Consulting Incorporated.
+ */
+
+/* CSS Document */
+
+.tdbodymiddle {
+    vertical-align: middle;
+}
+
+.navbar-inner
+{
+    background:lightblue;
+}
+
+.tooltippopup
+{
+    display: block;
+    position: absolute;
+    border-style: solid;
+    border-width: 2px;
+    padding: 5px;
+}
+
+.ui-datepicker-trigger
+{
+	vertical-align: bottom;
+	margin-left: 3px;
+	cursor:pointer;
+}
+
+.fc button:hover
+{
+	background-color: transparent !important;
+}
+
+.ui-dialog .ui-dialog-title
+{
+	color: white;
+}
+
+.tcuicomponent {
+	background:#c1d6ea !important;
+}
+
+#categoryFlyoutName
+{
+	min-width:300px;
+	max-width: 100%;
+	border: 1px solid #4A6782;
+	color: black !important;
+	background-color:white !important;
+	text-align: left !important;
+	margin-left: 0 !important;
+}
+
+.categoryFlyout
+{
+	min-width:330px;
+	max-width: 100%;
+	border: 1px solid #4A6782;
+	color: black !important;
+	background-color:white !important;
+	text-align: left !important;
+	border-radius: 3px;
+	font-size: 13px;
+	outline: 0;
+	padding: 3px 8px;
+	cursor: pointer;
+}
+
+.categoryFlyout .item .menu
+{
+	max-height: 300px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.categoryFlyout .item
+{
+
+}
+
+.categoryFlyOutItem:hover
+{
+	color: white !important;
+	background-color:#3e94f7 !important;
+}
+
+#categoryFlyoutName:hover
+{
+	background-color:#f2f2f2 !important;
+}
+
+.categoryFlyout:hover
+{
+	background-color:#f2f2f2 !important;
+}
+
+#categoryFlyout
+{
+	width:300px;
+	display: none;
+	margin-left:15px;
+	margin-top:5px
+}
+
+.blueLink {
+	text-decoration:underline;
+}
+
+/* used for adding clickable links in the data tables */
+.linkCell1 {
+	text-decoration:underline;
+}
+.linkCell2 {
+	
+	text-decoration:underline;
+}
+.linkCell3 {
+	
+	text-decoration:underline;
+}
+.linkCell4 {
+	
+	text-decoration:underline;
+}
+.linkCell5 {
+	
+	text-decoration:underline;
+}
+
+.notify {
+	font-weight: bold;
+	
+}
+
+img.sectionbtn {
+	width: 23px;
+	height: 23px;
+	text-align: center;
+	cursor: pointer;
+	vertical-align: bottom;
+}
+
+img.fieldbtn {
+	width: 23px;
+	height: 23px;
+	text-align: center;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.select {
+	cursor: pointer;
+}
+.strong {
+	font-weight: bold;
+}
+.strongunderline {
+	font-weight: bold;
+	text-decoration:underline;
+}
+.selectitems {
+	font-size: 1.25em;
+	font-weight: bold;
+	padding-right: 5px;
+	padding-left: 5px;
+	border-style: solid;
+}
+.selectitems:hover {
+	cursor: pointer;
+}
+
+tr {
+	font-size: 10pt;
+}
+
+table.dataTable tbody th,
+table.dataTable tbody td {
+
+}
+
+table.dataTable tbody tr.highlightWKHighRow {
+	 background-color: #ffaabb;
+}
+table.dataTable tbody tr.highlightWKMedRow {
+	background-color: #fff47f;
+}
+table.dataTable tbody tr.highlightWKLowRow {
+	background-color: #93dbff;
+}
+
+table.dataTable tr.even {
+	vertical-align: top;
+}
+table.dataTable tr.odd {
+	vertical-align: top;
+}
+table.dataTable td {
+	font-size: 10pt;
+	border-style:solid;
+	border-width: 1px;
+	vertical-align: top;
+}
+
+div.top {
+	padding-top: 8px;
+	font-size: 8pt;
+}
+.dt-buttons
+{
+	padding-bottom: 10px;
+	margin-left: 10px;
+}
+.dataTables_length
+{
+	margin-left: 10px;
+}
+div.bottom .dataTables_length
+{
+	margin-top: 8px;
+	margin-left: 15px;
+}
+.dataTables_info
+{
+	margin-left: 10px;
+}
+div.dataTables_info {
+}
+div.dataTables_filter {
+}
+select.incidentTagTable_length {
+}
+
+.row_highlight
+{
+    width: 100% !important;
+}
+/* Used for data table row highlight Start */
+.row_highlight tbody tr.even:hover, tbody tr.even td.highlighted {
+	cursor: pointer;
+}
+
+.row_highlight tbody tr.odd:hover, tbody tr.odd td.highlighted {
+	cursor: pointer;
+}
+
+/* Used for data table row highlight End */
+
+
+.sectionheader {
+	font-size: 16pt;
+	font-weight: bold;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-right: 15px;
+	padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box models math. A nested div with side padding can also be used as an alternate method. */
+	vertical-align: middle;
+	}
+.messageheader {
+    font-size: 16pt;
+    font-weight: bold;
+    padding: 7px 20px;
+    position: relative;
+    overflow: hidden;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin: 0;
+}
+.messagebox
+{
+    -moz-border-top-left-radius: 10px;
+    -moz-border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin: 0 0 20px;
+    padding: 0;
+}
+.messagebox-content {
+    position: relative;
+}
+.sectionheaderdashboard {
+	font-size: 12pt;
+	font-weight: bold;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	vertical-align: middle;
+}
+
+.unread-messages
+{
+    padding: 0px 5px;
+    border-radius: 5px;
+}
+.messages-listitem
+{
+    list-style-type: none;
+    padding: .5em 0em;
+    margin: 0 0 .5em;
+}
+.messages-listitem a:link {
+    
+}
+
+/* visited link */
+.messages-listitem a:visited {
+    
+}
+
+/* mouse over link */
+.messages-listitem a:hover {
+    
+}
+
+/* selected link */
+.messages-listitem a:active {
+    
+}
+.table100w
+{
+	WIDTH: 100%;
+}
+.table400w
+{
+	WIDTH: 400%;
+}
+.error_page_header
+{
+    FONT-SIZE: 14pt;
+    FONT-WEIGHT: bold;
+}
+.required {
+	text-align: left;
+}
+.newitemfrontpageheader {
+	text-align: left;
+    FONT-SIZE: 10pt;
+    FONT-WEIGHT: bold;
+}
+.newitemfrontpage {
+	text-align: left;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: bold;
+}
+.newitem {
+	text-align: left;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: bold;
+}
+td.siteheader-logo {
+	vertical-align: top;
+	width: 75px;
+}
+td.siteheader {
+	vertical-align: middle;
+	font-size: 25pt;
+	font-weight: bold;
+}
+td.siteheader-login {
+	vertical-align: bottom;
+}
+.helpwizardheader {
+	vertical-align: left;
+	font-size: 14pt;
+	font-weight: bold;
+}
+.helpwizardsubheader1 {
+	vertical-align: left;
+	font-weight: bold;
+	padding-left: 5px;
+}
+.helpwizardtd {
+	padding-left: 10px;
+}
+.errorheader {
+	vertical-align: middle;
+	padding-left: 5pt;
+}
+
+.error {
+	vertical-align: middle;
+	padding-left: 5pt;
+	font-size: 10pt;
+}
+
+hr {
+	height: 2px;
+}
+.imagetext {
+	text-align: left;
+	vertical-align: middle;
+}
+.imagetexttoc {
+	vertical-align: middle;
+}
+.highlightandsmall {
+	font-size:12px;
+}
+
+h1 {
+	font-size: 18pt;
+	font-weight: bold;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	}
+
+h2 {
+	font-size: 14pt;
+	font-weight: bold;
+	margin-top: 0px;
+	}
+
+h3 {
+	font-size: 14pt;
+	font-weight: normal;
+	}
+
+	h3 + p{
+		margin: 0px;
+		padding: 0px;
+		}
+
+h4 {
+	font-size: 12pt;
+	margin-bottom: 0px;
+	}
+
+	h4 + p{
+		margin: 0px;
+		padding: 0px;
+		}
+
+h5 {
+	font-weight: bold;
+
+}
+
+	h5 + p{
+		margin: 0px;
+		padding: 0px;
+		}
+
+h6 {
+	margin: 0;
+	font-size: 12pt;
+	font-weight: normal;
+	}
+
+	.largeCap {
+		font-size: 1.25em;
+		line-height: 1em;
+		}
+
+a {
+	outline: none;
+	text-decoration: underline;
+	}
+.copyright {
+	font-size:9px;
+}
+
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	margin: 0;
+	padding: 0;
+}
+
+body.form {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 1.1em;
+	margin: 0;
+	padding: 0;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 15px;
+	padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box models math. A nested div with side padding can also be used as an alternate method. */
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+a:visited {
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	
+	text-decoration: none;
+}
+
+.ui-state-focus
+{
+	background-color: #3e94f7;
+	color: #fff;
+}
+
+.ui-menu-item:before { content: "\00a0 "; }
+
+.ui-menu
+{
+	padding: 0 !important;
+	display: inline-block;
+}
+
+.ui-menu-item li
+{
+	margin-right: 10px !important;
+	cursor:default !important;
+}
+
+.ui-autocomplete
+{
+	max-height: 200px !important;
+}
+
+.ui-menu
+{
+	max-height: 300px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container {
+	width: 1200px;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+}
+.containerform {
+	width: 850px;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+}
+.containerhalf {
+	width: 600px;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+	align:top;
+}
+.containernowidth {
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+}
+
+.sidebar {
+	vertical-align: top;
+	padding: 5px;
+	text-align: left;
+	width: 160px;
+}
+.content {
+	vertical-align: top;
+	padding: 10px 0;	
+	text-align: left;
+	
+}
+/*Toolbar links: added !important to force this style */
+a.toolbarlink {
+	text-decoration: none !important;
+}
+a:visited.toolbarlink {
+	text-decoration: none !important;
+}
+a:hover.toolbarlink {
+	text-decoration: none !important;
+}
+
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol {
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
+ul.nav {
+	list-style: none; /* this removes the list marker */
+	margin-bottom: 15px; /* this creates the space between the navigation on the content below */
+}
+
+ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	padding: 2px 2px 2px 5px;
+	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+	text-decoration: none;
+	font-size: 10pt;
+}
+
+/* ~~ The footer ~~ */
+.footer {
+	padding: 10px 10px 10px 10px;
+	position: relative;/* this gives IE6 hasLayout to properly clear */
+	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
+}
+
+/* ~~ miscellaneous float/clear classes ~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+input
+{
+	margin: 0;
+	max-width: 100%;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 0 auto;
+	-ms-flex: 1 0 auto;
+	flex: 1 0 auto;
+	outline: 0;
+	-webkit-tap-highlight-color: rgba(255,255,255,0);
+	text-align: left;
+	line-height: 1.21428571em;
+	font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+	padding: .15em .4em;
+	background: #FFF;
+	border: 1px solid rgba(34,36,38,.15);
+	color: rgba(0,0,0,.87);
+	border-radius: .28571429rem;
+	-webkit-transition: box-shadow .1s ease,border-color .1s ease;
+	transition: box-shadow .1s ease,border-color .1s ease;
+	box-shadow: none;
+}
+
+input[type=file]
+{
+	border: 0;
+	background: transparent !important;
+}
+
+input[type=button]
+{
+	border-radius: 3px;
+	border: 0;
+	font-size: 13px;
+	outline: 0;
+	max-width: 100%;
+	padding: 3px 8px;
+	-webkit-appearance: button;
+	cursor: pointer;
+	margin-left: 5px;
+}
+
+button
+{
+	border-radius: 3px;
+	border: 0;
+	font-size: 13px;
+	outline: 0;
+	max-width: 100%;
+	padding: 3px 8px;
+	-webkit-appearance: button;
+	cursor: pointer;
+	margin-left: 5px;
+}
+
+.badge {
+    display: block;
+    position: absolute;
+    top: -12px;
+    right: 3px;
+    line-height: 16px;
+    height: 16px;
+    padding: 0 5px;
+    font-family: Arial, sans-serif;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.problemListItem {
+
+    width: 200px;
+    border-radius: 4px;
+    padding: 10px;
+    border: solid;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.problemList
+{
+    list-style: none;
+    padding: 0 !important;
+}
+
+.fixedHeightTable {
+    table-layout: fixed;
+}
+
+.fixedHeightTable td {
+    vertical-align: top;
+}
+
+.quicklinks-body
+{
+
+}
+.quicklinks-body h3 + p{
+    margin-top: 0;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+}
+
+.po-items
+{
+    border-collapse: collapse;
+}
+
+.po-items table
+{
+	border-collapse: collapse;
+}
+
+.po-items tbody th
+{
+    padding: 8px 10px;
+}
+
+.po-items-display td
+{
+    padding: 8px 10px;
+}
+
+.saveDisplayText
+{
+	font-weight: bold;
+	margin-left: 10px;
+	margin-right: 10px;
+	color: #fff;
+}
+
+.loggingInDisplayText
+{
+	margin-left: 10px;
+	margin-right: 10px;
+	color: #000;
+}
+
+#loginform-body {
+    padding: 5px;
+    width: 700px;
+    max-width: 96%;
+    margin: 0 auto 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control
+{
+    padding: 7px 8px;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    border-radius: 3px;
+    outline: none;
+    height: 20px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 14px;
+}
+
+.tdmain {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    max-width: 100%;
+    margin:0 auto;
+    border:none;
+}
+
+.simple-form-btn
+{
+    border-radius: 3px;
+    border: 0;
+    font-size: 18px;
+    outline: 0;
+    max-width: 100%;
+    padding: 10px 25px;
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+.simple-small-btn
+{
+	border-radius: 3px;
+	border: 0;
+	font-size: 13px;
+	outline: 0;
+	max-width: 100%;
+	padding: 5px 5px;
+	-webkit-appearance: button;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.confirm-message
+{
+    min-width: 100%;
+    width:300px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+/*  Style checkboxes and radio buttons  */
+.control-group {
+	display: inline-block;
+	vertical-align: top;
+	background: #fff;
+	text-align: left;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+	padding: 30px;
+	width: 200px;
+	height: 210px;
+	margin: 10px;
+}
+.control {
+	position: relative;
+	padding-left: 30px;
+	margin-bottom: 15px;
+	cursor: pointer;
+	font-size: 18px;
+}
+.control input {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+.control__indicator {
+	position: absolute;
+	top: 2px;
+	left: 0;
+	height: 20px;
+	width: 20px;
+	background: #e6e6e6;
+}
+.control--radio .control__indicator {
+	border-radius: 50%;
+}
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+	background: #ccc;
+}
+.control input:checked ~ .control__indicator {
+	background: #4d90fe;
+}
+
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+	background: #4d90fe;
+}
+.control input:disabled ~ .control__indicator {
+	background: #e6e6e6;
+	opacity: 0.6;
+	pointer-events: none;
+}
+.control__indicator:after {
+	content: '';
+	position: absolute;
+	display: none;
+}
+.control input:checked ~ .control__indicator:after {
+	display: block;
+}
+.control--checkbox .control__indicator:after {
+	left: 8px;
+	top: 4px;
+	width: 3px;
+	height: 8px;
+	border: solid #fff;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+.control--checkbox input:disabled ~ .control__indicator:after {
+	border-color: #7b7b7b;
+}
+.control--radio .control__indicator:after {
+	left: 7px;
+	top: 7px;
+	height: 6px;
+	width: 6px;
+	border-radius: 50%;
+	background: #fff;
+}
+.control--radio input:disabled ~ .control__indicator:after {
+	background: #7b7b7b;
+}
+.select {
+	position: relative;
+	display: inline-block;
+	margin-bottom: 15px;
+	width: 100%;
+}
+.select select {
+	display: inline-block;
+	width: 100%;
+	cursor: pointer;
+	padding: 10px 15px;
+	outline: 0;
+	border: 0;
+	border-radius: 0;
+	background: #e6e6e6;
+	color: #7b7b7b;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+.select select::-ms-expand {
+	display: none;
+}
+.select select:hover,
+.select select:focus {
+	color: #000;
+	background: #ccc;
+}
+.select select:disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+.select__arrow {
+	position: absolute;
+	top: 16px;
+	right: 15px;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+	border-style: solid;
+	border-width: 8px 5px 0 5px;
+	border-color: #7b7b7b transparent transparent transparent;
+}
+.select select:hover ~ .select__arrow,
+.select select:focus ~ .select__arrow {
+	border-top-color: #000;
+}
+.select select:disabled ~ .select__arrow {
+	border-top-color: #ccc;
+}
+/*  End Style checkboxes and radio buttons  */
+
+.socialButton {
+	-webkit-border-radius: 1px;
+	border-radius: 1px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .25);
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
+	transition: background-color .218s, border-color .218s, box-shadow .218s;
+	-webkit-user-select: none;
+	-webkit-appearance: none;
+	background-color: #fff;
+	background-image: none;
+	cursor: pointer;
+	outline: none;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	width: 250px;
+	margin-top: 20px;
+	height: 36px;
+	color: #757575
+}
+
+.socialButton:hover {background-color: #ededed}
+
+.socialButton:active {
+	background-color: #ededed;
+}
+
+.socialButtonContents {
+	font-family: Roboto,arial,sans-serif;
+	font-weight: 500;
+	letter-spacing: .21px;
+	margin-left: 6px;
+	margin-right: 6px;
+	vertical-align: top;
+	font-size:13px;
+	line-height:34px;
+}
+
+.socialButtonIcon {
+	float: left;
+	padding: 8px;
+}
+
+.socialButtonWrapper
+{
+	width: 100%;
+	height:100%;
+}
+
+.headerSearch
+{
+	width: 320px;
+	vertical-align: middle;
+	height: 20px;
+	margin-top: 2px;
+	margin-right:3px;
+}
+
+.headerSearch-cancel
+{
+	margin-right:30px;
+}
+
+/* Start Knowledge Base */
+.search-item
+{
+	margin-bottom: 20px;
+	width: 500px;
+}
+
+.search-item-excerpt
+{
+	font-size: 11pt;
+}
+
+.search-title
+{
+	padding: 0;
+	margin-bottom: 5px;
+}
+.search-results
+{
+	position: relative;
+	padding: 0;
+	list-style: none;
+	margin-top: 15px;
+}
+
+.gray-text
+{
+	color: #707070;
+	padding: 0;
+	margin-top: 5px;
+	font-size: 12px;
+}
+
+.gray-text-results
+{
+	color: #707070;
+	padding: 0;
+	margin-top: 5px;
+	margin-left: 40px;
+}
+
+.help-container {
+	display: table;
+}
+
+.auto-margins {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.container-content {
+	width: 100%;
+	margin-right: 50px;
+	margin-left: 50px;
+}
+
+.help-side-bar {
+	width: 30%;
+}
+
+.help-content, .help-side-bar {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.container-margins-left {
+	margin-left: 25px;
+	margin-bottom: 50px;
+	margin-top: 25px;
+}
+
+.help-content {
+	float: none;
+	padding-left: 20px;
+}
+
+.help-content, .help-side-bar {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.container-margins-right {
+	margin-right: 25px;
+	margin-bottom: 50px;
+}
+
+.kb_resource_list li {
+	list-style: none;
+	margin-bottom: 5px;
+	padding: 0;
+	font: 16px arial;
+}
+
+/* End Knowledge Base */
+
+
+/* Dropdown */
+.ui.selection.dropdown {
+	min-height: 0 !important;
+}
+
+form .ui.selection.dropdown {
+	 width: 330px !important;
+ }
+
+form .ui.multiple.selection.dropdown {
+	width: 80% !important;
+}
+
+.ui.dropdown .menu>.item {
+	font-size: 1em !important;
+}
+
+.ui.input input:focus {
+	outline: none !important;
+	border: 2px solid #4d90fe !important;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3) !important;
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3) !important;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.3) !important;
+}
+
+.ui.input input {
+	padding: .15em .4em !important;
+	border: 1px solid #4A6782 !important;
+	font-size: 10pt;
+}
+
+.lookup_id
+{
+	width: 80px;
+}
+
+.lookup_contact
+{
+	width: 200px;
+}
+
+form .ui.input input {
+	margin-left: 0px !important;
+}
+
+.ui.selection.dropdown {
+	padding: .3em .6em !important;
+	border: 1px solid #4A6782 !important;
+}
+
+.ui.selection.dropdown>.delete.icon, .ui.selection.dropdown>.dropdown.icon, .ui.selection.dropdown>.search.icon {
+	top: .38em !important;
+}
+
+.ui.search.selection.dropdown>input.search {
+	line-height: 1em !important;
+	padding: .3em .6em !important;
+}
+
+/* ie9-fixes.css */
+.menu .transition .visible {
+	display: block !important;
+	visibility: visible !important;
+}
+
+.ui.dropdown .menu>.item:hover {
+	background: #4d90fe !important;
+	color: #ffffff !important;
+}
+
+.ui.selection.active.dropdown {
+	outline: none !important;
+	border: 2px solid #4d90fe !important;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3) !important;
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3) !important;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.3) !important;
+}
+
+.ui.dropdown a
+{
+	outline: none;
+	text-decoration: none;
+	color: black !important;
+}
+
+.ui.dropdown a:hover
+{
+	outline: none !important;
+	text-decoration: none !important;
+	color: black !important;
+	cursor: pointer !important;
+}
+
+.ui.search.dropdown>.text {
+	margin-right: 14px;
+}
+
+.ui.dropdown .menu>.header {
+	background: transparent !important;
+}
+
+.ui.search.dropdown>input.search {
+	width: 90% !important;
+}
+
+.ui.icon.button, .ui.icon.buttons .button {
+	padding: .4em !important;
+	vertical-align: middle !important;
+}
+
+.ui.label {
+	font-weight: normal !important;
+}
+
+.ui.basic.red.label {
+	margin-bottom: 5px !important;
+	margin-top: 8px !important;
+	margin-left: 15px !important;
+	font-weight: normal !important;
+}
+
+.ui.search.dropdown .menu {
+	max-height: 20rem !important;
+}
+
+.ui.search.selection.dropdown .menu>.item {
+	padding: .5rem !important;
+}
+
+.ui.inline.dropdown .menu>.item {
+	padding: .5rem !important;
+}
+
+.ui.dropdown.categoryFlyout .menu>.item {
+	padding: .5rem .9rem !important;
+}
+
+.ui.button.smallui {
+	font-size: inherit !important;
+	padding: .5em 1em !important;
+}
+
+.ui.button.white {
+	background: white !important;
+}
+
+.ui.steps .step {
+	padding: 0.3em 1em !important;
+}
+
+.ui.steps .step>.icon {
+	line-height: 1;
+	font-size: 1.5em !important;
+	margin: 0 1rem 0 0;
+}
+
+.ui.inline.dropdown>.text>.icon{
+	margin-top: 0;
+	margin-left: 0;
+	float: none;
+	margin-right: 0;
+}
