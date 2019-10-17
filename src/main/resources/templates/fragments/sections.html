@@ -39,19 +39,21 @@
             <tr>
                 <td align="left">
                     <button type="button" id="home" class="tcui-home-icon" title="Home">
-                        &nbsp;&nbsp;Home
+                        Home
                     </button>
-
+                    <button type="button" id="timesheet" class="tcui-time-icon" title="Home">
+                        TimeSheet
+                    </button>
                 </td>
 
-                <td sec:authorize="hasAuthority('ADMIN')">
+                <td align="center" sec:authorize="hasAuthority('ADMIN')">
                     <button type="button" id="userslist" class="tcui-user-icon" title="Users">
-                        &nbsp;&nbsp;Users
+                        Users
                     </button>
                 </td>
                 <td align="right">
                     <button type="button" id="logout" class="tcui-logout-icon" title="Logout">
-                        &nbsp;&nbsp;Logout
+                        Logout
                     </button>
                 </td>
             </tr>
@@ -65,6 +67,9 @@
             });
             $("#userslist").button().on("click", function(){
                 window.open("/admin/users", "_self");
+            });
+            $("#timesheet").button().on("click", function(){
+                window.open("/timesheet", "_self");
             });
         </script>
     </header>
