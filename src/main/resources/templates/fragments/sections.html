@@ -37,19 +37,20 @@
         </div>
         <table class="table100w">
             <tr>
-                <td align="left">
+                <td align="left" width="400px">
                     <button type="button" id="home" class="tcui-home-icon" title="Home">
                         Home
                     </button>
                     <button type="button" id="timesheet" class="tcui-time-icon" title="Consultants Timesheets">
                        Consultants TimeSheet
                     </button>
-                </td>
-
-                <td align="center" sec:authorize="hasAuthority('ADMIN')">
                     <button type="button" id="userslist" class="tcui-user-icon" title="Users">
                         Users
                     </button>
+                </td>
+
+                <td align="center" sec:authorize="hasAuthority('ADMIN')">
+
                 </td>
                 <td align="right">
                     <button type="button" id="logout" class="tcui-logout-icon" title="Logout">
