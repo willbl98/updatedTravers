@@ -37,13 +37,12 @@
                     "sWidth": "25px"
                 },
 
-                {"sTitle": "First Name", "mData": "firstName"},
-                {"sTitle": "Last Name", "mData": "lastName"},
-                {"sTitle": "Time in", "mData": "timeIn"},
-                {"sTitle": "Time Out", "mData": "timeOut"},
-                {"sTitle": "Paid", "mData": "lastName"},
-                {"sTitle": "Billed", "mData": "billed"},
-                {"sTitle": "Expenses", "mData": "expenses"}
+                {"sTitle": "First Name", "mData": "FirstName"},
+                {"sTitle": "Last Name", "mData": "LastName"},
+                {"sTitle": "Time in", "mData": "TimeIn"},
+                {"sTitle": "Time Out", "mData": "TimeOut"},
+                {"sTitle": "Billed", "mData": "Billed"},
+                {"sTitle": "Expenses", "mData": "Paid"}
 
             ];
 
@@ -78,22 +77,22 @@
 
             formActionTimesheet = dialogUser.find( "dialog-form-timesheet" ).on( "submit", function( event ) {
                 event.preventDefault();
-                userSubmit();
+                timesheetSubmit();
             });
 
-            $( "#add_user_action" ).button().on( "click", function() {
-                document.getElementById("form_action_user").reset();
-                document.getElementById("id").value = "";
+            $( "#add_timeEntry_action" ).button().on( "click", function() {
+                document.getElementById("form_action_timsheet").reset();
+                document.getElementById("firstName").value = "";
                 document.getElementById("active").value = "";
                 $("#newOrReset").val("true");
                 loadRoles();
-                dialogUser = $( "#dialog-form-user" ).dialog({
+                dialogUser = $( "#dialog-form-timesheet" ).dialog({
                     autoOpen: false,
                     height: 450,
                     width: 700,
                     modal: true,
                     buttons: {
-                        "Save": userSubmit,
+                        "Save": timesheetSubmit,
                         Cancel: function() {
                             dialogUser.dialog( "close" );
                         }
@@ -142,29 +141,29 @@
                 width: 700,
                 modal: true,
                 buttons: {
-                    "Save": userSubmit,
+                    "Save": timesheetSubmit,
                     "Reset Password": function(){
                         $("#newOrReset").val("true");
-                        userSubmit();
+                        timesheetSubmit();
                     },
                     Cancel: function() {
                         dialogUser.dialog( "close" );
                     }
                 },
                 close: function() {
-                    $('#usersTable').DataTable().ajax.reload();
+                    $('#timesheetTable').DataTable().ajax.reload();
                 }
             });
             dialogUser.dialog( "open" );
         }
 
 
-        function userSubmit() {
-            console.log(data = $( "#form_action_user" ).serialize());
+        function timesheetSubmit() {
+            console.log(data = $( "#form_action_timesheet" ).serialize());
             $.ajax({
                 type: "POST",
                 url: "/api/users/",
-                data: $( "#form_action_user" ).serialize(),
+                data: $( "#form_action_timesheet" ).serialize(),
                 dataType: 'json',
                 cache: false,
                 timeout: 600000,
@@ -172,19 +171,19 @@
                     var json = "<h4>Ajax Response</h4><pre>"
                         + JSON.stringify(data, null, 4) + "</pre>";
                     $('#feedback').html(json);
-                    var dialogUser = $( "#dialog-form-user" ).dialog({
+                    var dialogUser = $( "#dialog-form-timesheet" ).dialog({
                         autoOpen: false,
                         height: 450,
                         width: 700,
                         modal: true,
                         buttons: {
-                            "Save": userSubmit,
+                            "Save": timesheetSubmit(),
                             Cancel: function() {
                                 dialogUser.dialog( "close" );
                             }
                         },
                         close: function() {
-                            $('#usersTable').DataTable().ajax.reload();
+                            $('#timesheetTable').DataTable().ajax.reload();
                         }
                     });
 
@@ -228,7 +227,7 @@
     <div id="dialog-form-user" title="Create User Account">
         <p>All form fields are required.</p>
 
-        <form id="form_action_user" name="form_action_user">
+        <form id="form_action_timesheet" name="form_action_timesheet">
             <input type="hidden" name = "id" id = "id"/>
             <input type="hidden" id = "newOrReset" name = "newOrReset"/>
             <input type="hidden" id = "active" name = "active"/>
