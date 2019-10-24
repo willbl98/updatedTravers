@@ -22,38 +22,43 @@
     <div th:insert="fragments/sections.html :: headitems"> </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            var userColumns = [
+            var timesheetColumns = [
                 {
-                    "sTitle": "ID",
-                    "mData": "id",
+                    "sTitle": "Name",
+                    "mData": "name",
                     "bSortable": true,
                     "mRender": function (data, type, full) {
                         if (data != null) {
-                            return '<a href="#" class="blueLink" onclick="userEdit(\'' + data + '\');return false;" >'+data+'</a>';
+                            return '<a href="#" class="blueLink" onclick="timesheetEdit(\'' + data + '\');return false;" >'+data+'</a>';
                         } else {
                             return 'error';
                         }
                     },
                     "sWidth": "25px"
                 },
-                {"sTitle": "Email", "mData": "email"},
+
                 {"sTitle": "First Name", "mData": "firstName"},
-                {"sTitle": "Last Name", "mData": "lastName"}
+                {"sTitle": "Last Name", "mData": "lastName"},
+                {"sTitle": "Time in", "mData": "timeIn"},
+                {"sTitle": "Time Out", "mData": "timeOut"},
+                {"sTitle": "Paid", "mData": "lastName"},
+                {"sTitle": "Billed", "mData": "billed"},
+                {"sTitle": "Expenses", "mData": "expenses"}
 
             ];
 
-            $('#usersTable').DataTable({
+            $('#timeSheetTable').DataTable({
                 "dom": '<"top"if>rt<"bottom"lp><"clear">',
                 "iDisplayLength": 10,
                 "bProcessing": true,
-                "sAjaxSource": '/api/users/list',
-                "aoColumns": userColumns,
+                "sAjaxSource": '/api/timesheet/list',
+                "aoColumns": timesheetColumns,
                 "aaSorting": [],
                 "deferRender": true,
                 "oLanguage": {"sSearch": "Filter: "}
             });
 
-            var dialogUser, formActionUser;
+            var dialogUser, formActionTimesheet;
 
             dialogUser = $( "#dialog-form-user" ).dialog({
                 autoOpen: false,
@@ -71,7 +76,7 @@
                 }
             });
 
-            formActionUser = dialogUser.find( "dialog-form-user" ).on( "submit", function( event ) {
+            formActionTimesheet = dialogUser.find( "dialog-form-timesheet" ).on( "submit", function( event ) {
                 event.preventDefault();
                 userSubmit();
             });
