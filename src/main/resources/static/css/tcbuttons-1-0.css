@@ -62,6 +62,13 @@
     background-position: left !important;
 }
 
+.tcui-time-icon {
+    background-image: url("/images/time.png") !important;
+    background-size: 18px 18px !important;
+    background-repeat: no-repeat !important;
+    background-position: left !important;
+}
+
 .tcui-logout-icon {
     background-image: url("/images/Minus-Plus.svg") !important;
     background-size: 18px 18px !important;
