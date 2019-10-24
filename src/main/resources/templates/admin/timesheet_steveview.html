@@ -3,103 +3,103 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="#{users.page.title}">Title</title>
+    <title th:text="#{timesheet.page.title}">Title</title>
     <div th:insert="fragments/sections.html :: headitems"> </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            var userColumns = [
+            var timesheetColumns = [
                 {
                     "sTitle": "ID",
                     "mData": "id",
                     "bSortable": true,
                     "mRender": function (data, type, full) {
                         if (data != null) {
-                            return '<a href="#" class="blueLink" onclick="userEdit(\'' + data + '\');return false;" >'+data+'</a>';
+                            return '<a href="#" class="blueLink" onclick="timesheetEdit(\'' + data + '\');return false;" >'+data+'</a>';
                         } else {
                             return 'error';
                         }
                     },
                     "sWidth": "25px"
                 },
-                {"sTitle": "Email", "mData": "email"},
-                {"sTitle": "First Name", "mData": "firstName"},
-                {"sTitle": "Last Name", "mData": "lastName"}
+                {"sTitle": "ID", "mData": "ID"},
+                {"sTitle": "First Name", "mData": "FirstName"},
+                {"sTitle": "Last Name", "mData": "LastName"}
 
             ];
 
-            $('#usersTable').DataTable({
+            $('#timesheetTable').DataTable({
                 "dom": '<"top"if>rt<"bottom"lp><"clear">',
                 "iDisplayLength": 10,
                 "bProcessing": true,
-                "sAjaxSource": '/api/users/list',
-                "aoColumns": userColumns,
+                "sAjaxSource": '/api/timesheet/list',
+                "aoColumns": timesheetColumns,
                 "aaSorting": [],
                 "deferRender": true,
                 "oLanguage": {"sSearch": "Filter: "}
             });
 
-            var dialogUser, formActionUser;
+            var dialogtimesheet, formActiontimesheet;
 
-            dialogUser = $( "#dialog-form-user" ).dialog({
+            dialogtimesheet = $( "#dialog-form-timesheet" ).dialog({
                 autoOpen: false,
                 height: 450,
                 width: 700,
                 modal: true,
                 buttons: {
-                    "Save": userSubmit,
+                    "Save": timesheetsubmit,
                     Cancel: function() {
-                        dialogUser.dialog( "close" );
+                        dialogtimesheet.dialog( "close" );
                     }
                 },
                 close: function() {
-                    $('#usersTable').DataTable().ajax.reload();
+                    $('#timesheetTable').DataTable().ajax.reload();
                 }
             });
 
-            formActionUser = dialogUser.find( "dialog-form-user" ).on( "submit", function( event ) {
+            formActiontimesheet = dialogtimesheet.find( "dialog-form-timesheet" ).on( "submit", function( event ) {
                 event.preventDefault();
-                userSubmit();
+                timesheetsubmit();
             });
 
-            $( "#add_user_action" ).button().on( "click", function() {
-                document.getElementById("form_action_user").reset();
+            $( "#add_timesheet_action" ).button().on( "click", function() {
+                document.getElementById("form_action_timesheet").reset();
                 document.getElementById("id").value = "";
                 document.getElementById("active").value = "";
                 $("#newOrReset").val("true");
                 loadRoles();
-                dialogUser = $( "#dialog-form-user" ).dialog({
+                dialogtimesheet = $( "#dialog-form-timesheet" ).dialog({
                     autoOpen: false,
                     height: 450,
                     width: 700,
                     modal: true,
                     buttons: {
-                        "Save": userSubmit,
+                        "Save": timesheetsubmit,
                         Cancel: function() {
-                            dialogUser.dialog( "close" );
+                            dialogtimesheet.dialog( "close" );
                         }
                     },
                     close: function() {
-                        $('#usersTable').DataTable().ajax.reload();
+                        $('#timesheetTable').DataTable().ajax.reload();
                     }
                 });
-                dialogUser.dialog( "open" );
+                dialogtimesheet.dialog( "open" );
             });
         });
-        function userEdit(data){
-            document.getElementById("form_action_user").reset();
+        function timesheetEdit(data){
+            document.getElementById("form_action_timesheet").reset();
             document.getElementById("id").value = "";
             document.getElementById("active").value = "";
             loadRoles();
             $.ajax({
                 type: "GET",
                 contentType: "application/json",
-                url: "/api/users/"+data,
+                url: "/api/timesheet/"+data,
                 //data: JSON.stringify(search),
                 dataType: 'json',
                 cache: false,
                 timeout: 600000,
                 success: function (data) {
-                    $("#form_action_user :input").each(function(){
+                    $("#form_action_timesheet :input").each(function(){
                         $(this).val(data[$(this).attr("id")]);
                     });
                     $("#newOrReset").val("false");
@@ -116,35 +116,35 @@
                     console.log("ERROR : ", e);
                 }
             });
-            var dialogUser = $( "#dialog-form-user" ).dialog({
+            var dialogtimesheet = $( "#dialog-form-timesheet" ).dialog({
                 autoOpen: false,
                 height: 450,
                 width: 700,
                 modal: true,
                 buttons: {
-                    "Save": userSubmit,
+                    "Save": timesheetsubmit,
                     "Reset Password": function(){
                         $("#newOrReset").val("true");
-                        userSubmit();
+                        timesheetsubmit();
                     },
                     Cancel: function() {
-                        dialogUser.dialog( "close" );
+                        dialogtimesheet.dialog( "close" );
                     }
                 },
                 close: function() {
-                    $('#usersTable').DataTable().ajax.reload();
+                    $('#timesheetTable').DataTable().ajax.reload();
                 }
             });
-            dialogUser.dialog( "open" );
+            dialogtimesheet.dialog( "open" );
         }
 
 
-        function userSubmit() {
-            console.log(data = $( "#form_action_user" ).serialize());
+        function timesheetsubmit() {
+            console.log(data = $( "#form_action_timesheet" ).serialize());
             $.ajax({
                 type: "POST",
-                url: "/api/users/",
-                data: $( "#form_action_user" ).serialize(),
+                url: "/api/timesheets/",
+                data: $( "#form_action_timesheet" ).serialize(),
                 dataType: 'json',
                 cache: false,
                 timeout: 600000,
@@ -152,23 +152,23 @@
                     var json = "<h4>Ajax Response</h4><pre>"
                         + JSON.stringify(data, null, 4) + "</pre>";
                     $('#feedback').html(json);
-                    var dialogUser = $( "#dialog-form-user" ).dialog({
+                    var dialogtimesheet = $( "#dialog-form-timesheet" ).dialog({
                         autoOpen: false,
                         height: 450,
                         width: 700,
                         modal: true,
                         buttons: {
-                            "Save": userSubmit,
+                            "Save": timesheetsubmit,
                             Cancel: function() {
-                                dialogUser.dialog( "close" );
+                                dialogtimesheet.dialog( "close" );
                             }
                         },
                         close: function() {
-                            $('#usersTable').DataTable().ajax.reload();
+                            $('#timesheetTable').DataTable().ajax.reload();
                         }
                     });
 
-                    dialogUser.dialog( "close" );
+                    dialogtimesheet.dialog( "close" );
 
                 },
                 error: function (e) {
@@ -202,13 +202,13 @@
 <div class="container">
     <div th:insert="fragments/sections.html :: header"> </div>
     <br/>
-    <table id ='usersLabel'><tr style="vertical-align:middle"><td style="font-weight: bold;font-size: 18px;color: darkblue">Users</td><td>&nbsp;<button id="add_user_action" class="tcui-add-icon" title="Add">&nbsp;</button></td></tr></table>
-    <table id="usersTable" class="hover" width="100%"></table>
+    <table id ='timesheetLabel'><tr style="vertical-align:middle"><td style="font-weight: bold;font-size: 18px;color: darkblue">timesheet</td><td>&nbsp;<button id="add_timesheet_action" class="tcui-add-icon" title="Add">&nbsp;</button></td></tr></table>
+    <table id="timesheetTable" class="hover" width="100%"></table>
 
-    <div id="dialog-form-user" title="Create User Account">
+    <div id="dialog-form-timesheet" title="Create timesheet Account">
         <p>All form fields are required.</p>
 
-        <form id="form_action_user" name="form_action_user">
+        <form id="form_action_timesheet" name="form_action_timesheet">
             <input type="hidden" name = "id" id = "id"/>
             <input type="hidden" id = "newOrReset" name = "newOrReset"/>
             <input type="hidden" id = "active" name = "active"/>
