@@ -94,4 +94,10 @@ public class MainRequestController {
         model.addAttribute("user", new User());
         return "/admin/users";
     }
+    @RequestMapping(value="/admin/timesheet_steveview", method = RequestMethod.GET)
+    public String timesheet(Model model) {
+        model.addAttribute("allRoles", roleDAO.listRoles());
+        model.addAttribute("user", new User());
+        return "/admin/timesheet_steveview";
+    }
 }
