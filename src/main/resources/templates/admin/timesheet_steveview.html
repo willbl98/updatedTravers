@@ -23,8 +23,10 @@
                 },
                 {"sTitle": "ID", "mData": "ID"},
                 {"sTitle": "First Name", "mData": "FirstName"},
-                {"sTitle": "Last Name", "mData": "LastName"}
-
+                {"sTitle": "Last Name", "mData": "LastName"},
+                {"sTitle": "Billed", "mData": "Billed"},
+                {"sTitle": "Paid", "mData": "Paid"},
+                {"sTitle": "Notes", "mData": "Notes"}
             ];
 
             $('#timesheetTable').DataTable({
@@ -212,12 +214,18 @@
             <input type="hidden" name = "id" id = "id"/>
             <input type="hidden" id = "newOrReset" name = "newOrReset"/>
             <input type="hidden" id = "active" name = "active"/>
-            <label for="email" class="strong">Email:</label>
-            <input type = "email" id = "email" name = "email" size="45"><br>
+            <label for="timeIn" class="strong">Time In:</label>
+            <input type = "timeIn" id = "timeIn" name = "email" size="45"><br>
             <label for="firstName" class="strong">First Name:</label>
             <input id = "firstName" name = "firstName" size="45"><br>
             <label for="lastName" class="strong">Last Name:</label>
             <input id = "lastName" name = "lastName" size="45"><br>
+            <label for="paid" class="strong">Paid:</label>
+            <input id = "paid" name = "paid" size="45"><br>
+            <label for="billed" class="strong">Billed:</label>
+            <input id = "billed" name = "billed" size="45"><br>
+            <label for="notes" class="strong">Notes:</label>
+            <input id = "notes" name = "paid" size="45"><br>
             <label for="roles" class="strong">Associated Roles:</label>
             <select id="roles" name = "rolesId"  size="10" multiple="multiple">
             </select>
