@@ -2,8 +2,7 @@
  * Travers Consulting
  *
  * [2014] - [2019] Travers Consulting Incorporated
- * All Rights Reserved.
- *
+ * All Rights Reserved
  * NOTICE:  All information contained herein is, and remains
  * the property of Travers Consulting Incorporated and its suppliers,
  * if any.  The intellectual and technical concepts contained
@@ -63,7 +62,7 @@
 }
 
 .tcui-time-icon {
-    background-image: url("/images/time.png") !important;
+    background-image: url("/images/Review.png") !important;
     background-size: 18px 18px !important;
     background-repeat: no-repeat !important;
     background-position: left !important;
