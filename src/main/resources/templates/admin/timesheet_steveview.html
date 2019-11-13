@@ -8,9 +8,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var timesheetColumns = [
-                {
-                    "sTitle": "ID",
-                    "mData": "id",
+                /*{
+                    "sTitle": "Punch",
+                    "mData": "punch",
                     "bSortable": true,
                     "mRender": function (data, type, full) {
                         if (data != null) {
@@ -20,16 +20,16 @@
                         }
                     },
                     "sWidth": "25px"
-                },
-                {"sTitle": "ID", "mData": "ID"},
-                {"sTitle": "First Name", "mData": "FirstName"},
-                {"sTitle": "Last Name", "mData": "LastName"},
-                {"sTitle": "Date", "mData": "Date"},
+                },*/
+                {"sTitle": "Punch", "mData": "punch"},
+                {"sTitle": "First Name", "mData": "firstName"},
+                {"sTitle": "Last Name", "mData": "lastName"},
+                //{"sTitle": "Date", "mData": "Date"},
                 {"sTitle": "Time In", "mData": "timeIn"},
                 {"sTitle": "Time Out", "mData": "timeOut"},
-                {"sTitle": "Billed", "mData": "Billed"},
-                {"sTitle": "Paid", "mData": "Paid"},
-                {"sTitle": "Notes", "mData": "Notes"}
+                {"sTitle": "Billed", "mData": "billed"},
+                {"sTitle": "Paid", "mData": "paid"},
+                //{"sTitle": "Notes", "mData": "Notes"}
             ];
 
             $('#timesheetTable').DataTable({
@@ -210,19 +210,21 @@
     <table id ='timesheetLabel'><tr style="vertical-align:middle"><td style="font-weight: bold;font-size: 18px;color: darkblue">timesheet</td><td>&nbsp;<button id="add_timesheet_action" class="tcui-add-icon" title="Add">&nbsp;</button></td></tr></table>
     <table id="timesheetTable" class="hover" width="100%"></table>
 
-    <div id="dialog-form-timesheet" title="Create timesheet Account">
+    <div id="dialog-form-timesheet" title="Create timesheet ">
         <p>All form fields are required.</p>
 
         <form id="form_action_timesheet" name="form_action_timesheet">
             <input type="hidden" name = "id" id = "id"/>
             <input type="hidden" id = "newOrReset" name = "newOrReset"/>
             <input type="hidden" id = "active" name = "active"/>
-            <label for="timeIn" class="strong">Time In:</label>
-            <input type = "timeIn" id = "timeIn" name = "email" size="45"><br>
             <label for="firstName" class="strong">First Name:</label>
             <input id = "firstName" name = "firstName" size="45"><br>
             <label for="lastName" class="strong">Last Name:</label>
             <input id = "lastName" name = "lastName" size="45"><br>
+            <label for="time_in" class="strong">Time In:</label>
+            <input id = "time_in" name = "TimeIn" size="45"><br>
+            <label for="time_out" class="strong">Time Out:</label>
+            <input id = "time_out" name = "TimeOut" size="45"><br>
             <label for="paid" class="strong">Paid:</label>
             <input id = "paid" name = "paid" size="45"><br>
             <label for="billed" class="strong">Billed:</label>
@@ -238,5 +240,6 @@
 
     <div th:insert="fragments/sections.html :: footer"> </div>
 </div>
+
 </body>
 </html>

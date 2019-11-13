@@ -12,11 +12,11 @@ import java.util.Set;
 @Table(name = "timesheet")
 public class Timesheet {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "punch")
     private Long punch;
-    @Column(name = "user_id")
-    private Long user_id;
+    //@Column(name = "user_id")
+    //private Long user_id;
     @Column(name = "FirstName")
     @NotEmpty(message="Please provide your first name")
     private String FirstName;
@@ -31,7 +31,6 @@ public class Timesheet {
     private boolean Billed;
     @Column(name = "Paid")
     private boolean Paid;
-    @ManyToOne
-    private User user;
+
 
 }
