@@ -37,7 +37,7 @@
         </div>
         <table class="table100w">
             <tr>
-                <td align="left" width="400px">
+                <td align="left" width="600px">
                     <button type="button" id="home" class="tcui-home-icon" title="Home">
                         Home
                     </button>
@@ -46,6 +46,9 @@
                     </button>
                     <button type="button" id="userslist" class="tcui-user-icon" title="Users">
                         Users
+                    </button>
+                    <button type="button" id="projects"  title="Users">
+                        Projects
                     </button>
                 </td>
 
@@ -71,6 +74,9 @@
             });
             $("#timesheet").button().on("click", function(){
                 window.open("/admin/timesheet_steveview", "_self");
+            });
+            $( "#projects" ).button().on( "click", function() {
+                window.open("/admin/projects", "_self");
             });
         </script>
     </header>

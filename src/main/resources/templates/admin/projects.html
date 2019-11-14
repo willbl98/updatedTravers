@@ -1,27 +1,42 @@
-
+<!--
+  ~ Travers Consulting
+  ~
+  ~ [2014] - [2019] Travers Consulting Incorporated
+  ~ All Rights Reserved.
+  ~
+  ~ NOTICE:  All information contained herein is, and remains
+  ~ the property of Travers Consulting Incorporated and its suppliers,
+  ~ if any.  The intellectual and technical concepts contained
+  ~ herein are proprietary to Travers Consulting Incorporated
+  ~ and its suppliers and may be covered by U.S. and Foreign Patents,
+  ~ patents in process, and are protected by trade secret or copyright law.
+  ~ Dissemination of this information or reproduction of this material
+  ~ is strictly forbidden unless prior written permission is obtained
+  ~ from Travers Consulting Incorporated.
+  -->
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="#{timesheet.page.title}">Title</title>
+    <title th:text="#{projects.page.title}">Title</title>
     <div th:insert="fragments/sections.html :: headitems"> </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            var timesheetColumns = [
+            var projectsColumns = [
                 /*{
                     "sTitle": "Punch",
                     "mData": "punch",
                     "bSortable": true,
                     "mRender": function (data, type, full) {
                         if (data != null) {
-                            return '<a href="#" class="blueLink" onclick="timesheetEdit(\'' + data + '\');return false;" >'+data+'</a>';
+                            return '<a href="#" class="blueLink" onclick="projectsEdit(\'' + data + '\');return false;" >'+data+'</a>';
                         } else {
                             return 'error';
                         }
                     },
                     "sWidth": "25px"
                 },*/
-                {"sTitle": "Entry", "mData": "punch"},
+                {"sTitle": "Punch", "mData": "punch"},
                 {"sTitle": "First Name", "mData": "firstName"},
                 {"sTitle": "Last Name", "mData": "lastName"},
                 //{"sTitle": "Date", "mData": "Date"},
@@ -29,82 +44,82 @@
                 {"sTitle": "Time Out", "mData": "timeOut"},
                 {"sTitle": "Billed", "mData": "billed"},
                 {"sTitle": "Paid", "mData": "paid"},
-                {"sTitle": "Notes", "mData": "notes"}
+                //{"sTitle": "Notes", "mData": "Notes"}
             ];
 
-            $('#timesheetTable').DataTable({
+            $('#projectsTable').DataTable({
                 "dom": '<"top"if>rt<"bottom"lp><"clear">',
                 "iDisplayLength": 10,
                 "bProcessing": true,
-                "sAjaxSource": '/api/timesheets/list',
-                "aoColumns": timesheetColumns,
+                "sAjaxSource": '/api/projectss/list',
+                "aoColumns": projectsColumns,
                 "aaSorting": [],
                 "deferRender": true,
                 "oLanguage": {"sSearch": "Filter: "}
             });
 
-            var dialogtimesheet, formActiontimesheet;
+            var dialogprojects, formActionprojects;
 
-            dialogtimesheet = $( "#dialog-form-timesheet" ).dialog({
+            dialogprojects = $( "#dialog-form-projects" ).dialog({
                 autoOpen: false,
                 height: 450,
                 width: 700,
                 modal: true,
                 buttons: {
-                    "Save": timesheetsubmit,
+                    "Save": projectssubmit,
                     Cancel: function() {
-                        dialogtimesheet.dialog( "close" );
+                        dialogprojects.dialog( "close" );
                     }
                 },
                 close: function() {
-                    $('#timesheetTable').DataTable().ajax.reload();
+                    $('#projectsTable').DataTable().ajax.reload();
                 }
             });
 
-            formActiontimesheet = dialogtimesheet.find( "dialog-form-timesheet" ).on( "submit", function( event ) {
+            formActionprojects = dialogprojects.find( "dialog-form-projects" ).on( "submit", function( event ) {
                 event.preventDefault();
-                timesheetsubmit();
+                projectssubmit();
             });
 
-            $( "#add_timesheet_action" ).button().on( "click", function() {
-                document.getElementById("form_action_timesheet").reset();
+            $( "#add_projects_action" ).button().on( "click", function() {
+                document.getElementById("form_action_projects").reset();
                 document.getElementById("id").value = "";
                 document.getElementById("active").value = "";
                 $("#newOrReset").val("true");
                 loadRoles();
-                dialogtimesheet = $( "#dialog-form-timesheet" ).dialog({
+                dialogprojects = $( "#dialog-form-projects" ).dialog({
                     autoOpen: false,
                     height: 450,
                     width: 700,
                     modal: true,
                     buttons: {
-                        "Save": timesheetsubmit,
+                        "Save": projectssubmit,
                         Cancel: function() {
-                            dialogtimesheet.dialog( "close" );
+                            dialogprojects.dialog( "close" );
                         }
                     },
                     close: function() {
-                        $('#timesheetTable').DataTable().ajax.reload();
+                        $('#projectsTable').DataTable().ajax.reload();
                     }
                 });
-                dialogtimesheet.dialog( "open" );
+                dialogprojects.dialog( "open" );
             });
         });
-        function timesheetEdit(data){
-            document.getElementById("form_action_timesheet").reset();
+        function projectsEdit(data){
+            document.getElementById("form_action_projects").reset();
             document.getElementById("id").value = "";
             document.getElementById("active").value = "";
             loadRoles();
             $.ajax({
                 type: "GET",
                 contentType: "application/json",
-                url: "/api/timesheet/"+data,
+                url: "/api/projects/"+data,
                 //data: JSON.stringify(search),
                 dataType: 'json',
                 cache: false,
                 timeout: 600000,
                 success: function (data) {
-                    $("#form_action_timesheet :input").each(function(){
+                    $("#form_action_projects :input").each(function(){
                         $(this).val(data[$(this).attr("id")]);
                     });
                     $("#newOrReset").val("false");
@@ -121,35 +136,35 @@
                     console.log("ERROR : ", e);
                 }
             });
-            var dialogtimesheet = $( "#dialog-form-timesheet" ).dialog({
+            var dialogprojects = $( "#dialog-form-projects" ).dialog({
                 autoOpen: false,
                 height: 450,
                 width: 700,
                 modal: true,
                 buttons: {
-                    "Save": timesheetsubmit,
+                    "Save": projectssubmit,
                     "Reset Password": function(){
                         $("#newOrReset").val("true");
-                        timesheetsubmit();
+                        projectssubmit();
                     },
                     Cancel: function() {
-                        dialogtimesheet.dialog( "close" );
+                        dialogprojects.dialog( "close" );
                     }
                 },
                 close: function() {
-                    $('#timesheetTable').DataTable().ajax.reload();
+                    $('#projectsTable').DataTable().ajax.reload();
                 }
             });
-            dialogtimesheet.dialog( "open" );
+            dialogprojects.dialog( "open" );
         }
 
 
-        function timesheetsubmit() {
-            console.log(data = $( "#form_action_timesheet" ).serialize());
+        function projectssubmit() {
+            console.log(data = $( "#form_action_projects" ).serialize());
             $.ajax({
                 type: "POST",
-                url: "/api/timesheets/",
-                data: $( "#form_action_timesheet" ).serialize(),
+                url: "/api/projectss/",
+                data: $( "#form_action_projects" ).serialize(),
                 dataType: 'json',
                 cache: false,
                 timeout: 600000,
@@ -157,23 +172,23 @@
                     var json = "<h4>Ajax Response</h4><pre>"
                         + JSON.stringify(data, null, 4) + "</pre>";
                     $('#feedback').html(json);
-                    var dialogtimesheet = $( "#dialog-form-timesheet" ).dialog({
+                    var dialogprojects = $( "#dialog-form-projects" ).dialog({
                         autoOpen: false,
                         height: 450,
                         width: 700,
                         modal: true,
                         buttons: {
-                            "Save": timesheetsubmit,
+                            "Save": projectssubmit,
                             Cancel: function() {
-                                dialogtimesheet.dialog( "close" );
+                                dialogprojects.dialog( "close" );
                             }
                         },
                         close: function() {
-                            $('#timesheetTable').DataTable().ajax.reload();
+                            $('#projectsTable').DataTable().ajax.reload();
                         }
                     });
 
-                    dialogtimesheet.dialog( "close" );
+                    dialogprojects.dialog( "close" );
 
                 },
                 error: function (e) {
@@ -207,13 +222,13 @@
 <div class="container">
     <div th:insert="fragments/sections.html :: header"> </div>
     <br/>
-    <table id ='timesheetLabel'><tr style="vertical-align:middle"><td style="font-weight: bold;font-size: 18px;color: darkblue">Timesheet</td><td>&nbsp;<button id="add_timesheet_action" class="tcui-add-icon" title="Add">&nbsp;</button></td></tr></table>
-    <table id="timesheetTable" class="hover" width="100%"></table>
+    <table id ='projectsLabel'><tr style="vertical-align:middle"><td style="font-weight: bold;font-size: 18px;color: darkblue">projects</td><td>&nbsp;<button id="add_projects_action" class="tcui-add-icon" title="Add">&nbsp;</button></td></tr></table>
+    <table id="projectsTable" class="hover" width="100%"></table>
 
-    <div id="dialog-form-timesheet" title="Create timesheet ">
+    <div id="dialog-form-projects" title="Create projects ">
         <p>All form fields are required.</p>
 
-        <form id="form_action_timesheet" name="form_action_timesheet">
+        <form id="form_action_projects" name="form_action_projects">
             <input type="hidden" name = "id" id = "id"/>
             <input type="hidden" id = "newOrReset" name = "newOrReset"/>
             <input type="hidden" id = "active" name = "active"/>
@@ -230,7 +245,7 @@
             <label for="billed" class="strong">Billed:</label>
             <input id = "billed" name = "billed" size="45"><br>
             <label for="notes" class="strong">Notes:</label>
-            <input id = "notes" name = "notes" size="45"><br>
+            <input id = "notes" name = "paid" size="45"><br>
             <label for="roles" class="strong">Associated Roles:</label>
             <select id="roles" name = "rolesId"  size="10" multiple="multiple">
             </select>
