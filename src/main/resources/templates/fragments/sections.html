@@ -47,6 +47,9 @@
                     <button type="button" id="userslist" class="tcui-user-icon" title="Users">
                         Users
                     </button>
+                    <button type="button" id="projects" class="tcui-user-icon" title="Users">
+                        Projects
+                    </button>
                 </td>
 
                 <td align="center" sec:authorize="hasAuthority('ADMIN')">
@@ -71,6 +74,9 @@
             });
             $("#timesheet").button().on("click", function(){
                 window.open("/admin/timesheet_steveview", "_self");
+            });
+            $( "#projects" ).button().on( "click", function() {
+                window.open("/projects", "_self");
             });
         </script>
     </header>
