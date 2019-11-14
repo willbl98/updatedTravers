@@ -81,3 +81,9 @@
     background-repeat: no-repeat !important;
     background-position: left !important;
 }
+.tcui-projects-icon {
+    background-image: url("/images/Projects.png") !important;
+    background-size: 18px 18px !important;
+    background-repeat: no-repeat !important;
+    background-position: left !important;
+}
