@@ -31,6 +31,8 @@ public class Timesheet {
     private boolean Billed;
     @Column(name = "Paid")
     private boolean Paid;
+    @Column(name = "Invoice")
+    private int Invoice;
     @Column(name = "Notes")
     private String Notes;
 

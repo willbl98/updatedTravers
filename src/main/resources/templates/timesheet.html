@@ -1,19 +1,4 @@
 <!--
-  ~ Travers Consulting
-  ~
-  ~ [2014] - [2019] Travers Consulting Incorporated
-  ~ All Rights Reserved.
-  ~
-  ~ NOTICE:  All information contained herein is, and remains
-  ~ the property of Travers Consulting Incorporated and its suppliers,
-  ~ if any.  The intellectual and technical concepts contained
-  ~ herein are proprietary to Travers Consulting Incorporated
-  ~ and its suppliers and may be covered by U.S. and Foreign Patents,
-  ~ patents in process, and are protected by trade secret or copyright law.
-  ~ Dissemination of this information or reproduction of this material
-  ~ is strictly forbidden unless prior written permission is obtained
-  ~ from Travers Consulting Incorporated.
-  -->
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
@@ -36,7 +21,7 @@
                     },
                     "sWidth": "25px"
                 },*/
-                {"sTitle": "Punch", "mData": "punch"},
+                {"sTitle": "Entry", "mData": "punch"},
                 {"sTitle": "First Name", "mData": "firstName"},
                 {"sTitle": "Last Name", "mData": "lastName"},
                 //{"sTitle": "Date", "mData": "Date"},
@@ -44,7 +29,7 @@
                 {"sTitle": "Time Out", "mData": "timeOut"},
                 {"sTitle": "Billed", "mData": "billed"},
                 {"sTitle": "Paid", "mData": "paid"},
-                //{"sTitle": "Notes", "mData": "Notes"}
+                {"sTitle": "Notes", "mData": "notes"}
             ];
 
             $('#timesheetTable').DataTable({
@@ -222,7 +207,7 @@
 <div class="container">
     <div th:insert="fragments/sections.html :: header"> </div>
     <br/>
-    <table id ='timesheetLabel'><tr style="vertical-align:middle"><td style="font-weight: bold;font-size: 18px;color: darkblue">timesheet</td><td>&nbsp;<button id="add_timesheet_action" class="tcui-add-icon" title="Add">&nbsp;</button></td></tr></table>
+    <table id ='timesheetLabel'><tr style="vertical-align:middle"><td style="font-weight: bold;font-size: 18px;color: darkblue">Timesheet</td><td>&nbsp;<button id="add_timesheet_action" class="tcui-add-icon" title="Add">&nbsp;</button></td></tr></table>
     <table id="timesheetTable" class="hover" width="100%"></table>
 
     <div id="dialog-form-timesheet" title="Create timesheet ">
@@ -245,7 +230,7 @@
             <label for="billed" class="strong">Billed:</label>
             <input id = "billed" name = "billed" size="45"><br>
             <label for="notes" class="strong">Notes:</label>
-            <input id = "notes" name = "paid" size="45"><br>
+            <input id = "notes" name = "notes" size="45"><br>
             <label for="roles" class="strong">Associated Roles:</label>
             <select id="roles" name = "rolesId"  size="10" multiple="multiple">
             </select>

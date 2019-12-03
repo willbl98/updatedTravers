@@ -100,10 +100,10 @@ public class MainRequestController {
         model.addAttribute("user", new User());
         return "/admin/timesheet_steveview";
     }
-    @RequestMapping(value="/admin/projects", method = RequestMethod.GET)
-    public String projects(Model model) {
+    @RequestMapping(value="/admin/project", method = RequestMethod.GET)
+    public String project(Model model) {
         model.addAttribute("allRoles", roleDAO.listRoles());
         model.addAttribute("user", new User());
-        return "/admin/projects";
+        return "/admin/project";
     }
 }
