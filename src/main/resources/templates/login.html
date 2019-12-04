@@ -26,6 +26,8 @@
                class="form-control" size="40"/> <br/>
         <input type="password"  th:placeholder="Password"
                id="password" name="password" class="form-control" size="40"/> <br />
+        <br/>
+        <br/>
         <button class="tcui-login-icon ui-button ui-corner-all ui-widget" name="Submit" value="Login" type="Submit" th:text="Login"></button>
         <div align="center" th:if="${param.error}">
             <p style="font-size: 25px; color: #FF1C19;">Email or Password invalid, please verify</p>
