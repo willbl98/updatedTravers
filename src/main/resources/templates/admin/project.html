@@ -1,19 +1,19 @@
 <!--
-  ~ Travers Consulting
-  ~
-  ~ [2014] - [2019] Travers Consulting Incorporated
-  ~ All Rights Reserved.
-  ~
-  ~ NOTICE:  All information contained herein is, and remains
-  ~ the property of Travers Consulting Incorporated and its suppliers,
-  ~ if any.  The intellectual and technical concepts contained
-  ~ herein are proprietary to Travers Consulting Incorporated
-  ~ and its suppliers and may be covered by U.S. and Foreign Patents,
-  ~ patents in process, and are protected by trade secret or copyright law.
-  ~ Dissemination of this information or reproduction of this material
-  ~ is strictly forbidden unless prior written permission is obtained
-  ~ from Travers Consulting Incorporated.
-  -->
+~ Travers Consulting
+~
+~ [2014] - [2019] Travers Consulting Incorporated
+~ All Rights Reserved.
+~
+~ NOTICE:  All information contained herein is, and remains
+~ the property of Travers Consulting Incorporated and its suppliers,
+~ if any.  The intellectual and technical concepts contained
+~ herein are proprietary to Travers Consulting Incorporated
+~ and its suppliers and may be covered by U.S. and Foreign Patents,
+~ patents in process, and are protected by trade secret or copyright law.
+~ Dissemination of this information or reproduction of this material
+~ is strictly forbidden unless prior written permission is obtained
+~ from Travers Consulting Incorporated.
+-->
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
@@ -22,91 +22,83 @@
     <div th:insert="fragments/sections.html :: headitems"> </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            var projectsColumns = [
+            var projectColumns = [
                 /*{
                     "sTitle": "Punch",
                     "mData": "punch",
                     "bSortable": true,
                     "mRender": function (data, type, full) {
                         if (data != null) {
-                            return '<a href="#" class="blueLink" onclick="projectsEdit(\'' + data + '\');return false;" >'+data+'</a>';
+                            return '<a href="#" class="blueLink" onclick="projectEdit(\'' + data + '\');return false;" >'+data+'</a>';
                         } else {
                             return 'error';
                         }
                     },
                     "sWidth": "25px"
                 },*/
-                {"sTitle": "Punch", "mData": "punch"},
-                {"sTitle": "First Name", "mData": "firstName"},
-                {"sTitle": "Last Name", "mData": "lastName"},
-                //{"sTitle": "Date", "mData": "Date"},
-                {"sTitle": "Time In", "mData": "timeIn"},
-                {"sTitle": "Time Out", "mData": "timeOut"},
-                {"sTitle": "Billed", "mData": "billed"},
-                {"sTitle": "Paid", "mData": "paid"},
-                //{"sTitle": "Notes", "mData": "Notes"}
+                {"sTitle": "Project Name", "mData": "projectName"}
             ];
 
-            $('#projectsTable').DataTable({
+            $('#projectTable').DataTable({
                 "dom": '<"top"if>rt<"bottom"lp><"clear">',
                 "iDisplayLength": 10,
                 "bProcessing": true,
-                "sAjaxSource": '/api/projectss/list',
-                "aoColumns": projectsColumns,
+                "sAjaxSource": '/api/projects/list',
+                "aoColumns": projectColumns,
                 "aaSorting": [],
                 "deferRender": true,
                 "oLanguage": {"sSearch": "Filter: "}
             });
 
-            var dialogprojects, formActionprojects;
+            var dialogproject, formActionproject;
 
-            dialogprojects = $( "#dialog-form-projects" ).dialog({
+            dialogproject = $( "#dialog-form-project" ).dialog({
                 autoOpen: false,
                 height: 450,
                 width: 700,
                 modal: true,
                 buttons: {
-                    "Save": projectssubmit,
+                    "Save": projectsubmit,
                     Cancel: function() {
-                        dialogprojects.dialog( "close" );
+                        dialogproject.dialog( "close" );
                     }
                 },
                 close: function() {
-                    $('#projectsTable').DataTable().ajax.reload();
+                    $('#projectTable').DataTable().ajax.reload();
                 }
             });
 
-            formActionprojects = dialogprojects.find( "dialog-form-projects" ).on( "submit", function( event ) {
+            formActionproject = dialogproject.find( "dialog-form-project" ).on( "submit", function( event ) {
                 event.preventDefault();
-                projectssubmit();
+                projectsubmit();
             });
 
-            $( "#add_projects_action" ).button().on( "click", function() {
-                document.getElementById("form_action_projects").reset();
+            $( "#add_project_action" ).button().on( "click", function() {
+                document.getElementById("form_action_project").reset();
                 document.getElementById("id").value = "";
                 document.getElementById("active").value = "";
                 $("#newOrReset").val("true");
                 loadRoles();
-                dialogprojects = $( "#dialog-form-projects" ).dialog({
+                dialogproject = $( "#dialog-form-project" ).dialog({
                     autoOpen: false,
                     height: 450,
                     width: 700,
                     modal: true,
                     buttons: {
-                        "Save": projectssubmit,
+                        "Save": projectsubmit,
                         Cancel: function() {
-                            dialogprojects.dialog( "close" );
+                            dialogproject.dialog( "close" );
                         }
                     },
                     close: function() {
-                        $('#projectsTable').DataTable().ajax.reload();
+                        $('#projectTable').DataTable().ajax.reload();
                     }
                 });
-                dialogprojects.dialog( "open" );
+                dialogproject.dialog( "open" );
             });
         });
-        function projectsEdit(data){
-            document.getElementById("form_action_projects").reset();
+        function projectEdit(data){
+            document.getElementById("form_action_project").reset();
             document.getElementById("id").value = "";
             document.getElementById("active").value = "";
             loadRoles();
@@ -119,7 +111,7 @@
                 cache: false,
                 timeout: 600000,
                 success: function (data) {
-                    $("#form_action_projects :input").each(function(){
+                    $("#form_action_project :input").each(function(){
                         $(this).val(data[$(this).attr("id")]);
                     });
                     $("#newOrReset").val("false");
@@ -136,35 +128,35 @@
                     console.log("ERROR : ", e);
                 }
             });
-            var dialogprojects = $( "#dialog-form-projects" ).dialog({
+            var dialogproject = $( "#dialog-form-project" ).dialog({
                 autoOpen: false,
                 height: 450,
                 width: 700,
                 modal: true,
                 buttons: {
-                    "Save": projectssubmit,
+                    "Save": projectsubmit,
                     "Reset Password": function(){
                         $("#newOrReset").val("true");
-                        projectssubmit();
+                        projectsubmit();
                     },
                     Cancel: function() {
-                        dialogprojects.dialog( "close" );
+                        dialogproject.dialog( "close" );
                     }
                 },
                 close: function() {
-                    $('#projectsTable').DataTable().ajax.reload();
+                    $('#projectTable').DataTable().ajax.reload();
                 }
             });
-            dialogprojects.dialog( "open" );
+            dialogproject.dialog( "open" );
         }
 
 
-        function projectssubmit() {
-            console.log(data = $( "#form_action_projects" ).serialize());
+        function projectsubmit() {
+            console.log(data = $( "#form_action_project" ).serialize());
             $.ajax({
                 type: "POST",
-                url: "/api/projectss/",
-                data: $( "#form_action_projects" ).serialize(),
+                url: "/api/projects/",
+                data: $( "#form_action_project" ).serialize(),
                 dataType: 'json',
                 cache: false,
                 timeout: 600000,
@@ -172,23 +164,23 @@
                     var json = "<h4>Ajax Response</h4><pre>"
                         + JSON.stringify(data, null, 4) + "</pre>";
                     $('#feedback').html(json);
-                    var dialogprojects = $( "#dialog-form-projects" ).dialog({
+                    var dialogproject = $( "#dialog-form-project" ).dialog({
                         autoOpen: false,
                         height: 450,
                         width: 700,
                         modal: true,
                         buttons: {
-                            "Save": projectssubmit,
+                            "Save": projectsubmit,
                             Cancel: function() {
-                                dialogprojects.dialog( "close" );
+                                dialogproject.dialog( "close" );
                             }
                         },
                         close: function() {
-                            $('#projectsTable').DataTable().ajax.reload();
+                            $('#projectTable').DataTable().ajax.reload();
                         }
                     });
 
-                    dialogprojects.dialog( "close" );
+                    dialogproject.dialog( "close" );
 
                 },
                 error: function (e) {
@@ -222,32 +214,19 @@
 <div class="container">
     <div th:insert="fragments/sections.html :: header"> </div>
     <br/>
-    <table id ='projectsLabel'><tr style="vertical-align:middle"><td style="font-weight: bold;font-size: 18px;color: darkblue">Projects</td><td>&nbsp;<button id="add_projects_action" class="tcui-add-icon" title="Add">&nbsp;</button></td></tr></table>
-    <table id="projectsTable" class="hover" width="100%"></table>
+    <table id ='projectLabel'><tr style="vertical-align:middle"><td style="font-weight: bold;font-size: 18px;color: darkblue">project</td><td>&nbsp;<button id="add_project_action" class="tcui-add-icon" title="Add">&nbsp;</button></td></tr></table>
+    <table id="projectTable" class="hover" width="100%"></table>
 
-    <div id="dialog-form-projects" title="Create projects ">
+    <div id="dialog-form-project" title="Create project ">
         <p>All form fields are required.</p>
 
-        <form id="form_action_projects" name="form_action_projects">
+        <form id="form_action_project" name="form_action_project">
             <input type="hidden" name = "id" id = "id"/>
             <input type="hidden" id = "newOrReset" name = "newOrReset"/>
             <input type="hidden" id = "active" name = "active"/>
-            <label for="firstName" class="strong">First Name:</label>
-            <input id = "firstName" name = "firstName" size="45"><br>
-            <label for="lastName" class="strong">Last Name:</label>
-            <input id = "lastName" name = "lastName" size="45"><br>
-            <label for="time_in" class="strong">Time In:</label>
-            <input id = "time_in" name = "TimeIn" size="45"><br>
-            <label for="time_out" class="strong">Time Out:</label>
-            <input id = "time_out" name = "TimeOut" size="45"><br>
-            <label for="paid" class="strong">Paid:</label>
-            <input id = "paid" name = "paid" size="45"><br>
-            <label for="billed" class="strong">Billed:</label>
-            <input id = "billed" name = "billed" size="45"><br>
-            <label for="notes" class="strong">Notes:</label>
-            <input id = "notes" name = "paid" size="45"><br>
-            <label for="roles" class="strong">Associated Roles:</label>
-            <select id="roles" name = "rolesId"  size="10" multiple="multiple">
+            <label for="projectName" class="strong">Project Name:</label>
+            <input id = "projectName" name = "projectName" size="45"><br>
+            4
             </select>
         </form>
     </div>
